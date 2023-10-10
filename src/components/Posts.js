@@ -23,7 +23,7 @@ export default function Posts() {
     <section className='posts'>
       <Routes>
         <Route path='/' element={
-          <div className='posts__container'>
+          <div id='posts' className='posts__container'>
             <div className={loaderClass}></div>
             <div className={errorClass}>{error}</div>
             <Swiper

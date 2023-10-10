@@ -1,14 +1,19 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function Home() {
+export default function Home({ isBurgerOpen, setBurgerOpen }) {
   const navigate = useNavigate();
+
   function logoHandler() {
     navigate('/');
   }
   function createHandler() {
     navigate('/form');
   }
+  function burgerHanlder() {
+    setBurgerOpen(!isBurgerOpen);
+  }
+  const burgerButtonClass = isBurgerOpen ? 'burger-buttons burger-buttons_active' : 'burger-buttons';
 
   return(
     <section className='home'>
@@ -27,9 +32,19 @@ export default function Home() {
           Swipe Through Posts
         </h1>
         <div className='home__buttons-container'>
-          <button className='button button_bg_green' type="button">Explore Posts</button>
-          <button onClick={createHandler} className='button button_bg_black' type="button">Create Post</button>
+          <button onClick={() => navigate('/')} className='button button_bg_green' type="button">
+            <a className='button__link' href='#posts'></a>
+            Explore Posts
+          </button>
+          <button onClick={createHandler} className='button button_bg_black' type="button">
+            Create Post
+          </button>
         </div>
+      </div>
+      <div onClick={burgerHanlder} className={burgerButtonClass}>
+        <div className='burger-line'></div>
+        <div className='burger-line'></div>
+        <div className='burger-line'></div>
       </div>
     </section>
   );
