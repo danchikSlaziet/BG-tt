@@ -36,6 +36,72 @@ $mobile-padding: 25px
     opacity: .65
     cursor: pointer 
 
+// preloader
+
+.loader,
+.loader:before,
+.loader:after 
+  background: $second-col
+  -webkit-animation: load1 1s infinite ease-in-out
+  animation: load1 1s infinite ease-in-out
+  width: 1em
+  height: 4em
+
+.loader 
+  color: $second-col
+  display: none
+  text-indent: -9999em
+  margin: 88px auto
+  position: absolute
+  top: 0
+  right: 0
+  left: 0
+  bottom: 0
+  font-size: 11px
+  -webkit-transform: translateZ(0)
+  -ms-transform: translateZ(0)
+  transform: translateZ(0)
+  -webkit-animation-delay: -0.16s
+  animation-delay: -0.16s
+  &_active
+    display: block
+
+.loader:before,
+.loader:after 
+  position: absolute
+  top: 0
+  content: ''
+
+.loader:before 
+  left: -1.5em
+  -webkit-animation-delay: -0.32s
+  animation-delay: -0.32s
+
+.loader:after 
+  left: 1.5em
+
+@-webkit-keyframes load1 
+  0%,
+  80%,
+  100% 
+    box-shadow: 0 0
+    height: 4em
+  40% 
+    box-shadow: 0 -2em
+    height: 5em
+  
+@keyframes load1 
+  0%,
+  80%,
+  100% 
+    box-shadow: 0 0
+    height: 4em
+  40% 
+    box-shadow: 0 -2em
+    height: 5em
+  
+
+
 
 // ========= HOME ===================
 .home
@@ -51,6 +117,10 @@ $mobile-padding: 25px
     width: 100px
     aspect-ratio: 1 / 1
     margin: 0 auto 60px auto
+    transition: opacity .24s linear
+    &:hover
+      opacity: .6
+      cursor: pointer
     @media screen and (max-width: $tablet-width)
       margin-bottom: 50px
     @media screen and (max-width: $mobile-width)
@@ -84,11 +154,23 @@ $mobile-padding: 25px
   background-color: #1E555C
   padding: $desktop-padding
   overflow-x: hidden
+  @media screen and (max-width: $tablet-width)
+    padding: $tablet-padding
+  @media screen and (max-width: $mobile-width)
+    padding: $mobile-padding
   &__container
     display: flex
     justify-content: center
     max-width: 1280px
     margin: 0 auto
+    position: relative
+  &__error
+    display: none
+    width: 100%
+    text-align: center
+    color: red
+    &_active
+      display: block
 
 .post
   display: flex
@@ -179,3 +261,110 @@ $mobile-padding: 25px
         opacity: 0.4
     100% 
         opacity: 1
+
+// ============== PostPage
+
+.post-page
+  max-width: 1280px
+  margin: 0 auto
+  &__comments
+  &__comment
+    display: flex
+    gap: 30px
+    justify-content: flex-start
+    &:not(:last-of-type)
+      margin-bottom: 35px
+      
+  &__comment-info
+    color: $second-col
+    display: flex
+    flex-direction: column
+    justify-content: space-evenly
+    gap: 10px
+  &__avatar
+    border-radius: 50%
+    width: 64px
+    height: 64px
+    flex-shrink: 0
+  &__comment-mail
+    margin: 0
+    font-weight: 800
+  &__comment-text
+    margin: 0
+
+.post-page .loader
+  position: initial
+
+.post-card
+  background-color: $second-col
+  border-radius: 20px
+  padding: 50px
+  display: flex
+  justify-content: space-between
+  gap: 50px
+  margin-bottom: 30px
+  @media screen and (max-width: $tablet-width)
+    flex-direction: column
+  @media screen and (max-width: $mobile-width)
+    padding: 20px
+  &__img
+    border-radius: 20px
+    height: fit-content
+    object-fit: cover
+    object-position: center
+    @media screen and (max-width: $tablet-width)
+      aspect-ratio: 1 / 1
+  &__info-wrapper
+    color: #3A2E39
+    display: flex
+    flex-direction: column
+    gap: 80px
+  &__heading
+    font-size: 45px
+    font-weight: 800
+    margin: 0
+    @media screen and (max-width: $mobile-width)
+      font-size: 30px
+  &__subheading
+    font-size: 35px
+    margin: 0
+    @media screen and (max-width: $mobile-width)
+      font-size: 25px
+
+
+// ================ FORM ===============
+
+.add-form 
+  display: flex
+  flex-direction: column
+  width: 70%
+  margin: 0 auto
+  &__error
+    margin: 15px 0
+    color: red
+    margin: 0 0 10px 0
+  &__button
+    background-color: $second-col
+    color: #1E555C
+    text-transform: uppercase
+  &__input
+    border: none
+    padding: 0
+    border-bottom: 1px solid $second-col
+    color: $first-col
+    background-color: transparent
+    margin-bottom: 20px
+    font-size: 25px
+    padding: 12px
+    &:focus
+      outline: none
+    &_type_title
+
+    &_type_text
+      min-height: 200px
+      border: 1px solid $second-col
+      border-radius: 10px
+
+.add-form__title
+
+.add-form__text

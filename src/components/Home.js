@@ -1,10 +1,19 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Home() {
+  const navigate = useNavigate();
+  function logoHandler() {
+    navigate('/');
+  }
+  function createHandler() {
+    navigate('/form');
+  }
+
   return(
     <section className='home'>
       <div className='home__content'>
-        <svg className='home__logo' viewBox="0 0 220 220" fill="none">
+        <svg onClick={logoHandler} className='home__logo' viewBox="0 0 220 220" fill="none">
           <path fillRule="evenodd" clipRule="evenodd" d="M114 30C75.3401 30 44 61.3401 44 100C44 138.66 75.3401 170 114 170C152.66 170 184 138.66 184 100C184 61.3401 152.66 30 114 30ZM114 130C97.4315 130 84 116.569 84 100C84 83.4314 97.4315 70 114 70C130.569 70 144 83.4315 144 100C144 116.569 130.569 130 114 130Z" fill="rgb(30, 85, 92)">
           </path>
           <mask id="path-2-inside-1_2_1389" fill="white">
@@ -19,7 +28,7 @@ export default function Home() {
         </h1>
         <div className='home__buttons-container'>
           <button className='button button_bg_green' type="button">Explore Posts</button>
-          <button className='button button_bg_black' type="button">Create Post</button>
+          <button onClick={createHandler} className='button button_bg_black' type="button">Create Post</button>
         </div>
       </div>
     </section>

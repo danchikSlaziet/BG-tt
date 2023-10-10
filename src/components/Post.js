@@ -1,14 +1,12 @@
 import React from 'react';
 import examplePath from '../images/Kwe3WC2g0G5YlshaqFWnWgy8E.webp';
-export { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function Post({ postInfo }) {
-
-  const params = useParams();
   const navigate = useNavigate();
 
   function postClickHanlder() {
-    navigate('')
+    navigate(`/${postInfo.id}`);
   }
 
   return(
@@ -22,7 +20,7 @@ export default function Post({ postInfo }) {
           {postInfo.title}
         </p>
       </div>
-      <button className='post__button button' type='button'>View post</button>
+      <button onClick={postClickHanlder} className='post__button button' type='button'>View post</button>
     </div>
   );
 }
