@@ -1,0 +1,181 @@
+@import './vendor/normalize'
+@import './vendor/fonts/fonts'
+
+html
+  scroll-behavior: smooth
+  font-family: 'Golos', Arial, Helvetica, sans-serif
+  font-weight: 400
+  
+
+// ========= variables =============
+
+$tablet-width: 1279.98px
+$mobile-width: 767.98px
+$first-col: #FFF
+$second-col: #F4D8CD
+$desktop-padding: 200px 100px
+$tablet-padding: 50px
+$mobile-padding: 25px
+
+//  ============= common styles ===========
+
+.button
+  padding: 10px 20px
+  color: $first-col
+  background-color: transparent
+  border: none
+  border-radius: 7px
+  transition: opacity .24s ease-in-out
+  @media screen and (max-width: $mobile-width)
+    width: 100%
+  &_bg_green
+    background-color: #1E555C
+  &_bg_black
+    background-color: #3A2E39
+  &:hover
+    opacity: .65
+    cursor: pointer 
+
+
+// ========= HOME ===================
+.home
+  background-color: $second-col
+  padding: $desktop-padding
+  box-sizing: border-box
+  @media screen and (max-width: $tablet-width)
+    padding: $tablet-padding
+  @media screen and (max-width: $mobile-width)
+    padding: $mobile-padding
+  &__logo
+    display: block
+    width: 100px
+    aspect-ratio: 1 / 1
+    margin: 0 auto 60px auto
+    @media screen and (max-width: $tablet-width)
+      margin-bottom: 50px
+    @media screen and (max-width: $mobile-width)
+      margin: 0 0 40px 0
+  &__title
+    font-family: 'WixMadeforDisplay', Arial, Helvetica, sans-serif
+    font-size: 80px
+    line-height: 1.1
+    color: #3A2E39
+    text-align: center
+    margin: 0 0 60px 0
+    @media screen and (max-width: $tablet-width)
+      margin-bottom: 50px
+      font-size: 64px
+    @media screen and (max-width: $mobile-width)
+      margin: 0 0 40px 0
+      font-size: 32px
+      text-align: left
+  &__buttons-container
+    display: flex
+    align-items: center
+    justify-content: center
+    gap: 15px
+    @media screen and (max-width: $mobile-width)
+      align-items: flex-start
+      flex-direction: column
+
+// ============ POSTS ==============
+
+.posts
+  background-color: #1E555C
+  padding: $desktop-padding
+  overflow-x: hidden
+  &__container
+    display: flex
+    justify-content: center
+    max-width: 1280px
+    margin: 0 auto
+
+.post
+  display: flex
+  flex-direction: column
+  align-items: flex-start
+  justify-content: center
+  gap: 30px
+  &__button
+    background-color: #3A2E39
+  &__img
+    object-fit: cover
+    object-position: center
+    border-radius: 40px
+    width: 100%
+    aspect-ratio: 1 / 1 
+  &__info
+    display: flex
+    flex-direction: column
+    gap: 10px
+    align-items: flex-start
+  &__index
+    color: $second-col
+    font-size: 20px
+    letter-spacing: -0.025em
+    margin: 0
+    line-height: 1.5
+  &__text
+    color: $first-col
+    line-height: 1.4
+    font-size: 20px
+    margin: 0
+
+.swiper-button-prev
+  position: absolute
+  top: 50%
+  transform: translateY(-50%)
+  left: 0
+  z-index: 10
+
+.swiper-button-next
+  position: absolute
+  top: 50%
+  transform: translateY(-50%)
+  right: 0
+  z-index: 10
+
+.arrow-slider
+  opacity: .44
+
+.arrow-slider svg 
+    width: 100px
+    height: auto
+    cursor: pointer
+    overflow: visible
+
+.arrow-slider svg polygon,
+.arrow-slider svg path 
+    transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1)
+    fill: $second-col
+
+.arrow-slider svg:hover polygon,
+.arrow-slider svg:hover path 
+    transition: all 1s cubic-bezier(0.2, 1, 0.3, 1)
+    fill: #000
+
+.arrow-slider svg:hover .arrow-slider-pl 
+    animation: arrow-slider-anim 1s cubic-bezier(0.2, 1, 0.3, 1) infinite
+
+.arrow-slider svg:hover .arrow-slider-pl-fixed 
+    animation: arrow-slider-fixed-anim 1s cubic-bezier(0.2, 1, 0.3, 1) infinite
+
+  
+@keyframes arrow-slider-anim 
+    0% 
+        opacity: 1
+        transform: translateX(0) 
+    5% 
+        transform: translateX(-0.1rem)
+    100% 
+        transform: translateX(1rem)
+        opacity: 0
+    
+
+@keyframes arrow-slider-fixed-anim 
+    5% 
+        opacity: 0
+    20% 
+        opacity: 0.4
+    100% 
+        opacity: 1
