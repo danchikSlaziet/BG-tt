@@ -8,13 +8,12 @@ export default function SwiperPosts({ posts, error, loading, postsRef }) {
   const errorClass = error !== null ? 'posts__error posts__error_active' : 'posts__eror';
 
   return (
-    <div id='posts' ref={postsRef} className='posts__container animate__animated animate__fadeInLeft'>
+    <div id='posts' ref={postsRef} className='posts__container animate__animated animate__slideInLeft'>
       <div className={loaderClass}></div>
       <div className={errorClass}>{error}</div>
       <Swiper
         loop
         modules={[Navigation]}
-        rewind={true}
         spaceBetween={50}
         slidesPerView={3}
         navigation={{
