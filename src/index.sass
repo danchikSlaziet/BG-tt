@@ -33,6 +33,10 @@ $mobile-padding: 25px
     background-color: #1E555C
   &_bg_black
     background-color: #3A2E39
+  &_bg_white
+    background-color: $second-col
+  &_col_black
+    color: black
   &:hover
     opacity: .65
     cursor: pointer
@@ -69,8 +73,11 @@ $mobile-padding: 25px
     font-weight: 700
     text-transform: uppercase
     transition: opacity .24s linear
+    @media screen and (max-width: $mobile-width)
+      font-size: 25px
     &:hover
       opacity: .65
+      cursor: pointer
 
 
 .burger-buttons
@@ -81,6 +88,12 @@ $mobile-padding: 25px
   height: 50px
   transition: opacity .24s linear
   z-index: 100
+  @media screen and (max-width: $mobile-width)
+    width: 30px
+    height: 30px
+    right: 30px
+  @media screen and (max-width: 475px)
+    top: 50px
   &_active
     padding-top: 12px
   &:hover
@@ -106,6 +119,8 @@ $mobile-padding: 25px
   background-color: #3A2E39
   &:not(:last-of-type)
     margin-bottom: 15px
+    @media screen and (max-width: $mobile-width)
+      margin-bottom: 5px
 
 // preloader
 
@@ -256,23 +271,34 @@ $mobile-padding: 25px
     object-position: center
     border-radius: 40px
     width: 100%
-    aspect-ratio: 1 / 1 
+    aspect-ratio: 1 / 1
+    @media screen and (max-width: $mobile-width)
+      width: 60%
+      margin: 0 auto
   &__info
     display: flex
     flex-direction: column
     gap: 10px
     align-items: flex-start
+    @media screen and (max-width: $mobile-width)
+      width: 100%
   &__index
     color: $second-col
     font-size: 20px
     letter-spacing: -0.025em
     margin: 0
     line-height: 1.5
+    @media screen and (max-width: $mobile-width)
+      text-align: center
+      width: 100%
   &__text
     color: $first-col
     line-height: 1.4
     font-size: 20px
     margin: 0
+    @media screen and (max-width: $mobile-width)
+      text-align: center
+      width: 100%
 
 .swiper-button-prev
   position: absolute
@@ -280,6 +306,10 @@ $mobile-padding: 25px
   transform: translateY(-50%)
   left: 0
   z-index: 10
+  @media screen and (max-width: 1000px)
+    top: 40%
+  @media screen and (max-width: 375px)
+    top: 30%
 
 .swiper-button-next
   position: absolute
@@ -287,6 +317,10 @@ $mobile-padding: 25px
   transform: translateY(-50%)
   right: 0
   z-index: 10
+  @media screen and (max-width: 1000px)
+    top: 40%
+  @media screen and (max-width: 375px)
+    top: 30%
 
 .arrow-slider
   opacity: .44
@@ -296,6 +330,12 @@ $mobile-padding: 25px
     height: auto
     cursor: pointer
     overflow: visible
+    @media screen and (max-width: $tablet-width)
+      width: 70px
+    @media screen and (max-width: 1000px)
+      width: 50px
+    @media screen and (max-width: 375px)
+      width: 40px
 
 .arrow-slider svg polygon,
 .arrow-slider svg path 
@@ -338,16 +378,26 @@ $mobile-padding: 25px
 .post-page
   max-width: 1280px
   margin: 0 auto
+  &__comments-heading
+    color: $second-col
+    font-size: 30px
+    font-weight: 600
   &__comments
+
   &__comment
     display: flex
     gap: 30px
     justify-content: flex-start
+    background-color: $second-col
+    border-radius: 20px
+    padding: 10px 15px
     &:not(:last-of-type)
       margin-bottom: 35px
+    @media screen and (max-width: 540px)
+      flex-direction: column
       
   &__comment-info
-    color: $second-col
+    color: #3A2E39
     display: flex
     flex-direction: column
     justify-content: space-evenly
@@ -360,6 +410,7 @@ $mobile-padding: 25px
   &__comment-mail
     margin: 0
     font-weight: 800
+    word-break: break-word
   &__comment-text
     margin: 0
 
@@ -385,22 +436,33 @@ $mobile-padding: 25px
     object-position: center
     @media screen and (max-width: $tablet-width)
       aspect-ratio: 1 / 1
+      width: 60%
+    @media screen and (max-width: 800px)
+      width: 100%
   &__info-wrapper
     color: #3A2E39
     display: flex
     flex-direction: column
     gap: 80px
+    @media screen and (max-width: $mobile-width)
+      gap: 40px
   &__heading
     font-size: 45px
     font-weight: 800
     margin: 0
-    @media screen and (max-width: $mobile-width)
+    word-break: break-word
+    @media screen and (max-width: $tablet-width)
       font-size: 30px
+    @media screen and (max-width: $mobile-width)
+      font-size: 25px
   &__subheading
     font-size: 35px
     margin: 0
-    @media screen and (max-width: $mobile-width)
+    word-break: break-word
+    @media screen and (max-width: $tablet-width)
       font-size: 25px
+    @media screen and (max-width: $mobile-width)
+      font-size: 20px
 
 
 // ================ FORM ===============
@@ -427,6 +489,8 @@ $mobile-padding: 25px
     margin-bottom: 20px
     font-size: 25px
     padding: 12px
+    @media screen and (max-width: $mobile-width)
+      font-size: 20px
     &:focus
       outline: none
     &_type_title
@@ -436,6 +500,59 @@ $mobile-padding: 25px
       border: 1px solid $second-col
       border-radius: 10px
 
-.add-form__title
+// =========== SUBSCRIBE ============
 
-.add-form__text
+.subscribe
+  background-color: #1E555C
+  padding: $desktop-padding
+  padding-top: 0
+  @media screen and (max-width: $tablet-width)
+    padding: $tablet-padding
+  @media screen and (max-width: $mobile-width)
+    padding: $mobile-padding
+  &__container
+    max-width: 1280px
+    margin: 0 auto
+  &__text
+    font-size: 48px
+    color: $second-col
+    font-family: 'WixMadeforDisplay', Arial, Helvetica, sans-serif
+    max-width: 800px
+    margin: 0 0 40px 0
+    @media screen and (max-width: $tablet-width)
+      font-size: 32px
+    @media screen and (max-width: $mobile-width)
+      font-size: 25px
+  &__buttons
+    display: flex
+    gap: 15px
+    @media screen and (max-width: $mobile-width)
+      flex-direction: column
+
+//  ============ FOOTER ======
+
+.footer
+  background-color: #1E555C
+  padding: 50px
+  &__container
+    max-width: 1280px
+    margin: 0 auto
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    gap: 20px
+  &__copyright
+    color: white
+    font-weight: 500
+  &__images
+    display: flex
+    width: 160px
+    height: 160px
+    flex-wrap: wrap
+  &__svg
+    background:rgb(36, 102, 111)
+    transform:rotate(0deg)
+    display:block
+    width: 80px
+    height: 80px

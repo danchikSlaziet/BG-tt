@@ -4,6 +4,7 @@ import examplePath from '../images/Kwe3WC2g0G5YlshaqFWnWgy8E.webp';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchComments } from '../store/action-creators/comments';
+import 'animate.css';
 
 export default function PostPage({ posts }) {
   const params = useParams();
@@ -20,7 +21,7 @@ export default function PostPage({ posts }) {
   const errorClass = error !== null ? 'posts__error posts__error_active' : 'posts__eror';
 
   return(
-    <div className='post-page'>
+    <div id='post-page' className='post-page animate__animated animate__fadeIn'>
       <div className='post-card'>
         <img className='post-card__img' src={examplePath} alt='post img'/>
         <div className='post-card__info-wrapper'>
@@ -31,6 +32,9 @@ export default function PostPage({ posts }) {
       <div className={loaderClass}></div>
       <div className={errorClass}>{error}</div>
       <div className='post-page__comments'>
+        <p className='post-page__comments-heading'>
+          Comments
+        </p>
         {comments.map((comment) => {
           return (
             <div key={comment.id} className='post-page__comment'>

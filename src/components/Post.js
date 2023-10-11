@@ -20,7 +20,10 @@ export default function Post({ postInfo }) {
           {postInfo.title}
         </p>
       </div>
-      <button onClick={postClickHanlder} className='post__button button' type='button'>View post</button>
+      <button onClick={postClickHanlder} className='post__button button' type='button'>
+        <a href='#post-page' className='button__link'></a>
+        View post
+      </button>
     </div>
   );
 }

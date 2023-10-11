@@ -1,13 +1,27 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { Link } from "react-scroll";
 
-export default function BurgerMenu({ isBurgerOpen, setBurgerOpen }) {
+export default function BurgerMenu({ isBurgerOpen, setBurgerOpen, formRef }) {
   const burgerMenuClass = isBurgerOpen ? 'burger-menu burger-menu_active' :  'burger-menu';
+  const navigate = useNavigate();
+  function hanldeLinkClick() {
+    navigate('/');
+    setBurgerOpen(false);
+  }
+  function handleNavLinkClick() {
+    setBurgerOpen(false);
+    // чтобы элемент нашёлся после того, как сработает роутинг
+    setTimeout(() => {
+      formRef.current.scrollIntoView({behavior: 'smooth'});
+    }, '0')
+  }
+
   return(
     <div className={burgerMenuClass}>
-      <NavLink onClick={() => setBurgerOpen(false)} className='burger-menu__link' to='/'>
+      <Link to='posts' duration={200} smooth={true} onClick={() => hanldeLinkClick()} className='burger-menu__link'>
         all posts
-      </NavLink>
-      <NavLink onClick={() => setBurgerOpen(false)} className='burger-menu__link' to='/form'>
+      </Link>
+      <NavLink to='/form' onClick={handleNavLinkClick} className='burger-menu__link'>
         create posts
       </NavLink>
     </div>
