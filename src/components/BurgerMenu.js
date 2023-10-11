@@ -1,9 +1,12 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { Link } from "react-scroll";
 
-export default function BurgerMenu({ isBurgerOpen, setBurgerOpen, formRef }) {
+export default function BurgerMenu({ isBurgerOpen, setBurgerOpen, postsRef }) {
   const burgerMenuClass = isBurgerOpen ? 'burger-menu burger-menu_active' :  'burger-menu';
   const navigate = useNavigate();
+
+  // лучше было конечно скроллЭвенты везде однотипно сделать, но я решил разными методами реализовать
+
   function hanldeLinkClick() {
     navigate('/');
     setBurgerOpen(false);
@@ -12,7 +15,7 @@ export default function BurgerMenu({ isBurgerOpen, setBurgerOpen, formRef }) {
     setBurgerOpen(false);
     // чтобы элемент нашёлся после того, как сработает роутинг
     setTimeout(() => {
-      formRef.current.scrollIntoView({behavior: 'smooth'});
+      postsRef.current.scrollIntoView({behavior: 'smooth'});
     }, '0')
   }
 

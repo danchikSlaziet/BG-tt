@@ -3,12 +3,12 @@ import { Navigation } from 'swiper/modules';
 import Post from "./Post";
 
 
-export default function SwiperPosts({ posts, error, loading, postsRef }) {
+export default function SwiperPosts({ posts, error, loading }) {
   const loaderClass = loading ? 'loader loader_active' : 'loader';
   const errorClass = error !== null ? 'posts__error posts__error_active' : 'posts__eror';
 
   return (
-    <div id='posts' ref={postsRef} className='posts__container animate__animated animate__slideInLeft'>
+    <div className='posts__container animate__animated animate__slideInLeft'>
       <div className={loaderClass}></div>
       <div className={errorClass}>{error}</div>
       <Swiper

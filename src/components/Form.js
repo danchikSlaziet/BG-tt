@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { addPost } from '../store/action-creators/posts';
 import 'animate.css';
 
-export default function Form({ posts, formRef, postsRef }) {
+export default function Form({ posts, postsRef }) {
   const [values, setValues] = useState({title: '', text: ''});
   const [error, setError] = useState('');
   const navigate = useNavigate();
@@ -40,7 +40,7 @@ export default function Form({ posts, formRef, postsRef }) {
   }
 
   return(
-      <form id='add-form' ref={formRef} onSubmit={submitHandler} className='add-form animate__animated animate__slideInLeft'>
+      <form onSubmit={submitHandler} className='add-form animate__animated animate__slideInLeft'>
         <input name='title' placeholder='enter post title' type='text' className='add-form__input add-form__input_type_title' value={values.title} onChange={(evt) => setValues({...values, title: evt.target.value})}/>
         <textarea name='text' placeholder='enter post text' className='add-form__input add-form__input_type_text' value={values.text} onChange={(evt) => setValues({...values, text: evt.target.value})}/>
         <p className='add-form__error'>{error}</p>

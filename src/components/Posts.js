@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchPosts } from '../store/action-creators/posts';
 import SwiperPosts from './SwiperPosts';
 
-export default function Posts({ formRef, postsRef }) {
+export default function Posts({ postsRef }) {
   const dispatch = useDispatch();
   const { error, loading, posts } = useSelector((state) => state.postsReducer);
   useEffect(() => {
@@ -18,11 +18,11 @@ export default function Posts({ formRef, postsRef }) {
 
 
   return(
-    <section className='posts'>
+    <section ref={postsRef} id='posts' name='posts' className='posts'>
       <Routes>
-        <Route path='/' element={<SwiperPosts postsRef={postsRef} posts={posts} error={error} loading={loading}/>} />
+        <Route path='/' element={<SwiperPosts posts={posts} error={error} loading={loading}/>} />
         <Route path='/:postId' element={<PostPage posts={posts}/>} />
-        <Route path='/form' element={<Form postsRef={postsRef} formRef={formRef} posts={posts} />} />
+        <Route path='/form' element={<Form postsRef={postsRef} posts={posts} />} />
       </Routes>
     </section>
   );

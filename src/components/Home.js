@@ -37,7 +37,7 @@ export default function Home({ isBurgerOpen, setBurgerOpen }) {
             Explore Posts
           </button>
           <button onClick={createHandler} className='button button_bg_black' type="button">
-            <a className='button__link' href='#add-form'></a>
+            <a className='button__link' href='#posts'></a>
             Create Post
           </button>
         </div>
